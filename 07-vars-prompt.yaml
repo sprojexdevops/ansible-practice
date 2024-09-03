@@ -1,3 +1,5 @@
+# enter the value for the prompt without any quotes even if it is a phrase
+
 - name: variables from prompt
   hosts: web
   vars_prompt:

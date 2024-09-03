@@ -1,4 +1,5 @@
 # ansible-playbook -i inventory.ini -e ansible_user=<username> -e ansible-password=<password> 09-vars-as-arguments.yaml -e "tech=ansible duration='20 hrs' student=Robert"
+# if the value of any variable passing as argument is a phrase, it must be in 'single quote'
 
 - name: variables as CLI arguments
   hosts: web
