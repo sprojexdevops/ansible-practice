@@ -1,4 +1,4 @@
-# ansible-playbook -i inventory.ini -e ansible_user=<username> -e ansible-password=<password> 01-multi-play.yaml
+# ansible-playbook -i inventory.ini -e ansible_user=<username> -e ansible-password=<password> 02-multi-play.yaml
 # a playbook can have multiple plays but usual preference is to have one play per playbook
 
 
