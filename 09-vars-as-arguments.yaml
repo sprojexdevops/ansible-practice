@@ -1,0 +1,8 @@
+# ansible-playbook -i inventory.ini -e ansible_user=<username> -e ansible-password=<password> 09-vars-as-arguments.yaml -e "tech=ansible duration='20 hrs' student=Robert"
+
+- name: variables as CLI arguments
+  hosts: web
+  tasks:
+  - name: print variables passed as CLI arguments
+    ansible.builtin.debug:
+      msg: "Hello All, My Name is {{student}}. I'm learning {{ tech }}, it would take {{ duration }} to complete"

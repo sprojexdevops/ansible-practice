@@ -2,12 +2,12 @@
   hosts: web
   vars: # play level; these varaibles apply to all the tasks
     tech: ansible
-    duration: "120 hrs"
+    duration: "20 hrs"
   tasks:
   - name: print variables
     vars: # task level; these varaibles apply only for the task and overwrite the play level varaibles
       student: Robert
-      duration: "140 hrs"
+      duration: "30 hrs"
     ansible.builtin.debug:
       msg: "Hello All, My Name is {{student}}. I'm learning {{ tech }}, it would take {{ duration }} to complete"
   

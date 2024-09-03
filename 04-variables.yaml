@@ -4,7 +4,7 @@
   hosts: web
   vars:
     tech: ansible
-    duration: "120 hrs"
+    duration: "20 hrs"
   tasks:
   - name: print variables
     ansible.builtin.debug:

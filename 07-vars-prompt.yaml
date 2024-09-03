@@ -1,0 +1,16 @@
+- name: variables from prompt
+  hosts: web
+  vars_prompt:
+  - name: tech
+    prompt: enter the name of technology
+    private: false    # true if the value is confidential
+  - name: duration
+    prompt: enter the duration
+    private: false
+  - name: student
+    prompt: enter your name
+    private: false
+  tasks:
+  - name: print variables from the prompt
+    ansible.builtin.debug:
+      msg: "Hello All, My Name is {{student}}. I'm learning {{ tech }}, it would take {{ duration }} to complete"
