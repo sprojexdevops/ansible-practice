@@ -1,0 +1,11 @@
+# ansible-playbook -i inventory.ini -e ansible_user=<username> -e ansible-password=<password> 04-variables.yaml
+
+- name: print variables
+  hosts: web
+  vars:
+    tech: ansible
+    duration: "120 hrs"
+  tasks:
+  - name: print variables
+    ansible.builtin.debug:
+      msg: "Hello All, My Name is Student. I'm learning {{ tech }}, it would take {{ duration }} to complete"

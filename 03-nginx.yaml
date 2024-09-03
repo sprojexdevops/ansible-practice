@@ -1,0 +1,16 @@
+# ansible-playbook -i inventory.ini -e ansible_user=<username> -e ansible-password=<password> 03-nginx.yaml
+
+- name: nginx install and run
+  hosts: web
+  become: yes   # take sudo access; add this only to perform taks that require sudo privileges
+  tasks:
+  - name: install nginx
+    ansible.builtin.package:  # heterogenous module that can work for all distributions
+    - name: nginx
+      state: present
+  
+  - name: start nginx
+    ansible.builtin.service:
+    - name: nginx
+      state: started
+      enabled: yes

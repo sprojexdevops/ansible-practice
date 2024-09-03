@@ -1,0 +1,16 @@
+- name: print variables
+  hosts: web
+  vars: # play level; these varaibles apply to all the tasks
+    tech: ansible
+    duration: "120 hrs"
+  tasks:
+  - name: print variables
+    vars: # task level; these varaibles apply only for the task and overwrite the play level varaibles
+      student: Robert
+      duration: "140 hrs"
+    ansible.builtin.debug:
+      msg: "Hello All, My Name is {{student}}. I'm learning {{ tech }}, it would take {{ duration }} to complete"
+  
+  - name: print variables
+    ansible.builtin.debug:
+      msg: "Hello All, My Name is Student. I'm learning {{ tech }}, it would take {{ duration }} to complete"

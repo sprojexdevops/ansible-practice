@@ -1,0 +1,20 @@
+# ansible-playbook -i inventory.ini -e ansible_user=<username> -e ansible-password=<password> 01-multi-play.yaml
+# a playbook can have multiple plays but usual preference is to have one play per playbook
+
+
+# PLAY-01
+- name: play-01
+  hosts: web 
+  tasks:
+  - name: taks-01 in play-01
+    ansible.builtin.debug:  # to print a message similar to echo in shell
+      msg: "Hello, this is from taks-01 in play-01"
+
+
+# PLAY-02
+- name: play-02
+  hosts: web
+  tasks:
+  - name: taks-01 in play-02
+    ansible.builtin.debug:  # to print a message similar to echo in shell
+      msg: "Hello, this is from taks-01 in play-02"

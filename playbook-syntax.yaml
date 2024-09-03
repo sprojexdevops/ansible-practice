@@ -1,0 +1,5 @@
+- name: # name of playbook
+  hosts: # host or group of hosts which ansible has to connect
+  tasks:  # list of tasks/module collections
+  - name: # name of the play/task
+    ansible.builtin.ping: # module, it is a dictionary/map (list of objects)

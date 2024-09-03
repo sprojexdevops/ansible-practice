@@ -1,0 +1,7 @@
+# ansible-playbook -i inventory.ini -e ansible_user=<username> -e ansible-password=<password> 01-ping.yaml
+
+- name: ping the server
+  hosts: web
+  tasks:
+  - name: ping the server
+    ansible.builtin.ping:
