@@ -1,0 +1,16 @@
+- name: check user
+  hosts: web
+  become: yes
+  tasks:
+  - name: check user expense
+    ansible.builtin.command: id expense
+    register: USER  # is a variable that gets the value of previous command; here it is 'id expense'
+    ignore_errors: true
+  
+  - name: print USER info
+    ansible.builtin.debug:
+      msg: "{{USER}}"
+
+  - name: create user
+    ansible.builtin.command: useradd expense
+    when: USER.rc != 0

@@ -1,0 +1,22 @@
+- name: install nginx
+  hosts: web
+  become: yes
+  tasks:
+  - name: print ansible facts
+    ansible.builtin.debug:
+      msg: "{{ansible_facts}}"
+
+  - name: install nginx if redhat
+    ansible.builtin.dnf:    # dnf is used for redhat/centos and module for dnf is available in ansible
+      name: nginx
+      state: present
+    when: ansible_os_family == "RedHat"
+
+  - name: install nginx if ubuntu/debian
+    ansible.builtin.apt:    # apt is used for ubuntu(debian) and module for apt is available in ansible
+      name: nginx
+      state: present
+    when: ansible_os_family == "Debian"
+
+
+# ansible.builtin.package: ---> module can be used if no module is found to manage packages of underlying OS distribution

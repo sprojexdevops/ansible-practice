@@ -1,0 +1,7 @@
+- name: print the ansible facts
+  hosts: web
+  become: yes
+  tasks:
+  - name: print ansible     # Gathering_Facts is a default task that runs first when a playbook is executed; ansible collects the info. This info can be used to write the scripts
+    ansible.builtin.debug:
+      msg: "facts are {{ansible_facts}}"  # ansible_facts is a default variable where ansible store the gathered facts

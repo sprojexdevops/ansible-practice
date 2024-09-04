@@ -1,0 +1,42 @@
+- name: check the number
+  hosts: local
+  connection: local
+  vars:
+    my_number: 10
+  vars_prompt:
+  - name: number
+    prompt: enter the number
+    private: false
+  tasks:
+
+# check number passed from prompt
+  - name: check if number from prompt is greater than 10
+    ansible.builtin.debug:
+      msg: "{{number}} is greater than 10"
+    when: number | int > 10   # conditional expression; pipe is required to convert the string to integer when the values is passed as a prompt. By default the value passed from prompt is considered as a string
+  
+  - name: check if number  from promptis less than 10
+    ansible.builtin.debug:
+      msg: "{{number}} is less than 10"
+    when: number | int < 10   # conditional expression
+
+  - name: check if number from prompt is equal to 10
+    ansible.builtin.debug:
+      msg: "{{number}} is equal to 10"
+    when: number | int == 10   # conditional expression
+
+# check number passed from vars
+  - name: check if number from vars is greater than 10
+    ansible.builtin.debug:
+      msg: "{{my_number}} is greater than 10"
+    when: my_number > 10   # conditional expression; no conversion required as the value is taken as integer under vars
+  
+  - name: check if number from vars is less than 10
+    ansible.builtin.debug:
+      msg: "{{my_number}} is less than 10"
+    when: my_number < 10   # conditional expression
+
+  - name: check if number from vars is equal to 10
+    ansible.builtin.debug:
+      msg: "{{my_number}} is equal to 10"
+    when: my_number == 10   # conditional expression
