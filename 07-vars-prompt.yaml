@@ -1,4 +1,4 @@
-# enter the value for the prompt without any quotes even if it is a phrase
+# enter the value when prompted without any quotes even if it is a phrase
 
 - name: variables from prompt
   hosts: web
