@@ -1,3 +1,5 @@
+# ansible-playbook -i inventory.ini 12-conditions.yaml
+
 - name: check user
   hosts: web
   become: yes

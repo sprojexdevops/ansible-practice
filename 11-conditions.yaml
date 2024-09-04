@@ -1,3 +1,5 @@
+# ansible-playbook -i inventory.ini 11-conditions.yaml
+
 - name: check the number
   hosts: local
   connection: local

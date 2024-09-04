@@ -1,3 +1,5 @@
+# ansible-playbook -i inventory.ini 10.data-types.yaml
+
 - name: data types
   hosts: local    # run playbook on the ansible server
   connection: local   # not ask for creds while running on the ansible server
