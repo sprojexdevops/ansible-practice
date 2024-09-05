@@ -10,6 +10,7 @@
     - backend
     - backend2
     - frontend
+    zone: "sprojex.in"
   tasks:
   - name: install boto3 and botocore for python
     ansible.builtin.command: pip3.9 install {{item}}
@@ -31,5 +32,30 @@
   - name: print ec2_instances
     ansible.builtin.debug:
       msg: "{{ec2_instances}}"
+
+  - name: create r53 records for private IPs
+    amazon.aws.route53:
+      state: present
+      zone: "{{zone}}"
+      record: "{{item.item}}.{{zone}}"
+      type: A
+      ttl: 10
+      value: "{{item.instances[0].private_ip_address}}"
+      wait: true
+      overwrite: true
+    loop: "{{ec2_instances.results}}"
+
+  - name: create r53 records for public IP of frontend
+    amazon.aws.route53:
+      state: present
+      zone: "{{zone}}"
+      record: "{{zone}}"
+      type: A
+      ttl: 10
+      value: "{{item.instances[0].public_ip_address}}"
+      wait: true
+      overwrite: true
+    loop: "{{ec2_instances.results}}"
+    when: ec2_instances.results.item == "frontend"
     
     
