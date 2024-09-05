@@ -1,0 +1,60 @@
+- name: demo on filters
+  hosts: local
+  connection: local
+  tasks:
+  # filter to take the default value if no varibale and its value is specified for the play or task
+  - name: default variable
+    ansible.builtin.debug:
+      msg: "Hello, I'm learning {{course | default('Ansible')}}" 
+
+  # filter to convert a string to upper or lower case
+  - name: convert to uppercase
+    vars:
+      greeting: "Hello World"
+    ansible.builtin.debug:
+      msg: "{{ greeting | upper }}"
+
+  - name: convert to lowercase
+    vars:
+      greeting: "Hello World"
+    ansible.builtin.debug:
+      msg: "{{ greeting | lower }}"
+
+  # filter to get unique values or remove the duplicate values
+  - name: remove duplicate numbers or get unique values
+    vars:
+      numbers: [1,2,3,4,45,4,3,5]
+    ansible.builtin.debug:
+      msg: "{{numbers | unique}}"
+
+  # filter to get minimum and maximum number
+  - name: get the minimum and maximum number
+    vars:
+      numbers: [1,2,3,4,45,4,3,5]
+    ansible.builtin.debug:
+      msg: "minimum: {{numbers | min}}; maximum: {{numbers | max}}" 
+  
+  # filter to convert map/dictionary to list/items and vice-versa
+  - name: convert map/dictionary to list
+    vars:
+      course:
+        name: Ansible
+        duration: "120 hrs"
+    ansible.builtin.debug:
+      msg: "{{course | dict2items}}"
+
+  - name: convert list/items to map/dictionary
+    vars:
+      course:
+      - {"key": "name", "value": Ansible"}
+      - {"key": "duration", "value": "120 hrs"}
+    ansible.builtin.debug:
+      msg: "{{course | items2dict}}"
+
+  # filter to check if ip is valid or not
+  - name: check ip address
+    ansible.builtin.debug:
+      msg: "{{item | ansible.utils.ipv4}}"  # this requires to have 'netaddr' python library on the host where this playbook is executed
+    loop:
+    - "192.168.1.1"
+    - "301.168.256.10"

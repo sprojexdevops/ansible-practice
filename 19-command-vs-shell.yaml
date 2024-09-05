@@ -1,0 +1,19 @@
+- name: command vs shell module
+  hosts: local
+  connection: local
+  tasks:
+  - name: command module
+    ansible.builtin.command: ls -ltr  # simple command; it is just issued to execute
+    register: command_output
+
+  - name: print command output
+    ansible.builtin.debug:
+      msg: "{{command_output}}"
+
+  - name: shell module
+    ansible.builtin.shell: ls -ltr > /tmp/output.txt  # complex command; login to server and execute it
+    register: shell_output
+
+  - name: print shell output
+    ansible.builtin.debug:
+      msg: "{{shell_output}}"

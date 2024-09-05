@@ -6,7 +6,7 @@
   tasks:
   - name: check user expense
     ansible.builtin.command: id expense
-    register: USER  # is a variable that gets the value of previous command; here it is 'id expense'
+    register: USER  # is a variable that gets the value of previous command; here it is 'id expense'; similar to $(command) in shell script
     ignore_errors: true
   
   - name: print USER info
