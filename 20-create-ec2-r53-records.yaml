@@ -13,7 +13,9 @@
     zone: "sprojex.in"
   tasks:
   - name: install boto3 and botocore for python
-    ansible.builtin.command: pip3.9 install {{item}}
+    ansible.builtin.package:
+      name: "{{item}}"
+      state: present
     loop:
     - boto3
     - botocore
