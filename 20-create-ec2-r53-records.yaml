@@ -12,14 +12,14 @@
     - frontend
     zone: "sprojex.in"
   tasks:
-  # - name: ansible to install boto3 and botocore for python
+  # - name: ansible to install boto3 and botocore for python  # with loop
   #   ansible.builtin.pip:
   #     name: "{{item}}"
   #     state: present
   #   loop:
   #   - boto3
   #   - botocore
-  - name: ansible to install boto3 and botocore for python
+  - name: ansible to install boto3 and botocore for python  # without loop
     ansible.builtin.pip:
       name:
       - boto3
