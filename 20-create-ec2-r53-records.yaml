@@ -12,13 +12,19 @@
     - frontend
     zone: "sprojex.in"
   tasks:
+  # - name: ansible to install boto3 and botocore for python
+  #   ansible.builtin.pip:
+  #     name: "{{item}}"
+  #     state: present
+  #   loop:
+  #   - boto3
+  #   - botocore
   - name: ansible to install boto3 and botocore for python
     ansible.builtin.pip:
-      name: "{{item}}"
+      name:
+      - boto3
+      - botocore
       state: present
-    loop:
-    - boto3
-    - botocore
   - name: create ec2 instances
     amazon.aws.ec2_instance:
       name: "{{item}}"
