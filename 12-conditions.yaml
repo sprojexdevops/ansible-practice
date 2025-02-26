@@ -15,4 +15,4 @@
 
   - name: create user
     ansible.builtin.command: useradd expense
-    when: USER.rc != 0
+    when: USER.rc != 0    # rc is the return code
