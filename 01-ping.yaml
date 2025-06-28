@@ -1,5 +1,14 @@
 # ansible-playbook -i inventory.ini -e ansible_user=<username> -e ansible-password=<password> 01-ping.yaml
 
+# host details in inventory.ini
+# ansible-playbook -i inventory.ini -e ansible_user=ec2-user -e ansible_password=DevOps321
+
+# host details and credentials in inventory
+# ansible-playbook -i inventory.ini 01-ping.yaml
+
+# targeting a specific host
+# ansible -i 172.31.43.143, all -e ansible_user=ec2-user -e ansible_password=DevOps321 -m ping
+
 - name: ping the server
   hosts: web
   tasks:
